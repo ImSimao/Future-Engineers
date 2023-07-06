@@ -1,8 +1,15 @@
-Engineering materials
-====
+# WRO 2023 [SG-1]
 
-This repository contains engineering materials of a self-driven vehicle's model participating in the WRO Future Engineers competition in the season 2022.
+## TEAM:
+Jaime Rei (coach)
 
+Eleonor Silva
+
+Joana Silva
+
+Simão Freire
+
+***
 ## Content
 
 * `t-photos` contains 2 photos of the team (an official one and one funny photo with all team members)
@@ -13,14 +20,9 @@ This repository contains engineering materials of a self-driven vehicle's model 
 * `models` is for the files for models used by 3D printers, laser cutting machines and CNC machines to produce the vehicle elements. If there is nothing to add to this location, the directory can be removed.
 * `other` is for other files which can be used to understand how to prepare the vehicle for the competition. It may include documentation how to connect to a SBC/SBM and upload files there, datasets, hardware specifications, communication protocols descriptions etc. If there is nothing to add to this location, the directory can be removed.
 
-## Introduction
+## `SRC` Source code description
+In the [src](/src) directory exits 2 subdirectories [`Picaxe`](/src/Picaxe) and [`camera`](/src/camera), in the subdirectory `Picaxe` there are 2 Programms writen in basic picaxe, in the subdirectory `camera` there is the programm that runs on the camera.
 
-_This part must be filled by participants with the technical clarifications about the code: which modules the code consists of, how they are related to the electromechanical components of the vehicle, and what is the process to build/compile/upload the code to the vehicle’s controllers._
+To run and programm with picaxe it is needed to install the Picaxe IDE from their website and install the drivers, then connect the cable to the robot and hit programm. In this robot we use picaxe 28x2/40x2 as the Main and a 14M2 as a slave to control the RGB sensor as well the motors.
 
-## How to prepare the repo based on the template
-
-_Remove this section before the first commit to the repository_
-
-1. Clone this repo by using the `git clone` functionality.
-2. Remove `.git` directory
-3. [Initialize a new public repository on GitHub](https://github.com/new) by following instructions from "create a new repository on the command line" section (appeared after pressing "Create repository" button).
+To use and operate the camera we use OpenMV.

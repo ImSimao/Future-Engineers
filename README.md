@@ -21,8 +21,8 @@ Simão Freire
 * `other` is for other files which can be used to understand how to prepare the vehicle for the competition. It may include documentation how to connect to a SBC/SBM and upload files there, datasets, hardware specifications, communication protocols descriptions etc. If there is nothing to add to this location, the directory can be removed.
 
 ## `SRC` Source code description
-In the [`src`](/src) directory exits 2 subdirectories [`Picaxe`](/src/Picaxe) and [`camera`](/src/camera), in the subdirectory `Picaxe` there are 2 Programms writen in basic picaxe, in the subdirectory `camera` there is the programm that runs on the camera.
+In the [`src`](/src) directory exits 2 subdirectories [`Picaxe`](/src/Picaxe) and [`camera`](/src/camera), in the subdirectory `Picaxe` there are 2 Programms writen in basic picaxe, in the subdirectory `camera` there is the programm that runs on our camera.
 
 To run and programm with picaxe it is needed to install the Picaxe IDE from their website and install the drivers, then connect the cable to the robot and hit programm. In this robot we use picaxe 28x2/40x2 as the Main and a 14M2 as a slave to control the RGB sensor as well the motors.
 
-To use and operate the camera we use OpenMV, there we use a programm made in python, all the libraries used are installed simultaneously with the OpenMV software.
+To use and operate the camera we use OpenMV, there we use a programm made in python, all the libraries used are installed simultaneously with the OpenMV software. This programm will identify the colour red or green and send it in bits to our main controller.

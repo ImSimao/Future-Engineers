@@ -25,4 +25,4 @@ In the [`src`](/src) directory exits 2 subdirectories [`Picaxe`](/src/Picaxe) an
 
 To run and programm with picaxe it is needed to install the Picaxe IDE from their website and install the drivers, then connect the cable to the robot and hit programm. In this robot we use picaxe 28x2/40x2 as the Main and a 14M2 as a slave to control the RGB sensor as well the motors.
 
-To use and operate the camera we use OpenMV.
+To use and operate the camera we use OpenMV, there we use a programm made in python, all the libraries used are installed simultaneously with the OpenMV software.

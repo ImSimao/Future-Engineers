@@ -33,7 +33,8 @@ To use and operate the camera we use OpenMV, we use a program made in Python, an
   
   2- Identify the objects and their respective colour to bypass them by the respective side.
     Using the camera, we detect the colours by selecting a threshold with the OpenMV software, then we send the information as bits to the Main processor.
-  
+  ![Screenshot (5)](https://github.com/ImSimao/Future-Engineers/assets/138500914/bc0c6cec-5bdb-462a-9902-3587a5821a8d)
+
   3- When it detects a blue or orange line (depending on the side it is using) turn to the respective side.
     We detect the lines using an RGB sensor connected to the slave processor 14M2, this processor has been programmed with the values of the colours of the lines and when it detects a line it sends the information as bits to the main. 
   

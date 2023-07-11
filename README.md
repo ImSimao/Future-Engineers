@@ -39,12 +39,13 @@ To use and operate the camera we use OpenMV, we use a program made in Python, an
     We detect the lines using an RGB sensor connected to the slave processor 14M2, this processor has been programmed with the values of the colours of the lines and when it detects a line it sends the information as bits to the main. 
   
   4- The program knows when to stop by counting how many times it passed by the lines, after 12 times it moves forward a bit more and then completely stops.
-  
 
 ### The Program - Main.bas
 
-  The Main program starts by using the sonars to detect the outer wall
-  
+  The Main program starts by looping the sonars routine to keep checking and detecting for the outer wall
+
+  >Inicio2:
+>
   > if pinb.4=0 and pinb.5=0 and pinb.6=0  then seguir_parede_esq_2_1
 >
   > if pinb.4=0 and pinb.5=1 and pinb.6=0  then frente_contornar_2
@@ -53,6 +54,8 @@ To use and operate the camera we use OpenMV, we use a program made in Python, an
 >
   > if pinb.4=1 and pinb.5=0 and pinb.6=0  then esquerda_in_2
 >
+  >goto inicio2:
+
 This routine checks the sonars from left, right and front to see if theres any obstacle or wall in front of the robot, then it starts following the outer wall.
 
 When the front sonar detects and object within a predetermined distance it triggers the routine to bypass the object:
@@ -92,6 +95,45 @@ The "contornar_verde_cego" and " contornar_vermelho_cego" routines will use the 
 >if w4>350 then frente_r
 >
 >return
+
+
+### RGB - 14M2.bas
+
+This Program only controls the RGB sensor.
+
+It starts with a loop to keep cheking for lines, if the values collected are in the threshhold of the colour of the line then it will count the time to check if it is not a false positive, if it is not a false positive then it will comunicate with the main processor informing it that there is a line.
+
+>inicio:
+>
+>low 
+>
+>low 4
+>
+>count 3,50,w1
+>
+>high 4
+>
+>count 3,50,w2
+>
+>high 1
+>
+>count 3,50,w3
+>
+>debug
+>
+>'if w1>120 and w1<200 and w2>240 and w2<330 and w3>50 and w3<120 then laranja
+>
+>'if w1>50 and w1<110 and w2>110 and w2<200 and w3>30 and w3<90 then laranja
+> 
+>if w1>45 and w1<78 and w2>83 and w2<130 and w3>20 and w3<50 then laranja
+>
+>'if w1>70 and w1<130 and w2>500 and w2<590 and w3>170 and w3<230 then azul
+>
+>if w1<1000 and w2<1000 and w3<1000 then inicio
+>
+>goto inicio
+
+
  
 
 

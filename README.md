@@ -27,7 +27,7 @@ To run and program with Picaxe it is needed to install the Picaxe IDE from their
 
 To use and operate the camera we use OpenMV, we use a program made in Python, and all the libraries used are installed simultaneously with the OpenMV software. This program will identify the colour red or green and send it in bits to our main controller.
 ***
-## The Program
+## The Program - General
 
   1- Identify where the outer wall is, this will make the program know if it uses the orange line or blue line to turn and follow the wall again.
   
@@ -39,6 +39,63 @@ To use and operate the camera we use OpenMV, we use a program made in Python, an
     We detect the lines using an RGB sensor connected to the slave processor 14M2, this processor has been programmed with the values of the colours of the lines and when it detects a line it sends the information as bits to the main. 
   
   4- The program knows when to stop by counting how many times it passed by the lines, after 12 times it moves forward a bit more and then completely stops.
+
+### The Program - Main.bas
+
+  The Main program starts by using the sonars to detect the outer wall
+  
+  > if pinb.4=0 and pinb.5=0 and pinb.6=0  then seguir_parede_esq_2_1
+>
+  > if pinb.4=0 and pinb.5=1 and pinb.6=0  then frente_contornar_2
+>
+  > if pinb.4=0 and pinb.5=0 and pinb.6=1  then direita_in_2
+>
+  > if pinb.4=1 and pinb.5=0 and pinb.6=0  then esquerda_in_2
+>
+This routine checks the sonars from left, right and front to see if theres any obstacle or wall in front of the robot, then it starts following the outer wall.
+
+When the front sonar detects and object within a predetermined distance it triggers the routine to bypass the object:
+
+>frente_contornar_2:
+>
+>PULSOUT c.0, 1
+>
+>PULSIN c.0, 1, w1
+>
+>if w1<421 then cores_2
+>                   
+>if w1>420 and w1<701 then frente_lento_r_2
+>
+>if w1>700 then frente_frente_r_2
+>
+>goto inicio2
+
+The routine "cores_2" checks if there are any lines to make the turn, if there isn't it, it will check again the distance, if it's near enought to begin the bypassing routine it will go to "frente_lento_r_2" and will slow down and then bypass it, if it's still far enought it will continue moving forward at the default speed.
+
+The "contornar_verde_cego" and " contornar_vermelho_cego" routines will use the sharp to detect the objetc while bypassing it, beeing the only difference, if it bypasses it by the right or the left.
+
+>contornar_verde_cego:
+>
+>readadc10 A.0,w4    'SHARP DIREITA
+>
+>if w4<241 then direita6_r
+>    
+>if w4>240 and w4<261 then direita5_r
+>               
+>if w4>260 and w4<281 then direita3_r
+>     
+>if w4>280 and w4<301 then direita1_r   
+>
+>if w4>300 and w4<351 then frente_r     
+>
+>if w4>350 then frente_r
+>
+>return
+ 
+
+
+
+
   
   
 

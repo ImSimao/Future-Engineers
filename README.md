@@ -29,7 +29,7 @@ To use and operate the camera we use OpenMV, we use a program made in Python, an
 ***
 ## The Program
 
-  1- Identify where the outer wall is, this will make the program know if it uses the orange line or blue line to turn and follow the wall again
+  1- Identify where the outer wall is, this will make the program know if it uses the orange line or blue line to turn and follow the wall again.
   
   2- Identify the objects and their respective colour to bypass them by the respective side.
     Using the camera, we detect the colours by selecting a threshold with the OpenMV software, then we send the information as bits to the Main processor.
@@ -38,7 +38,7 @@ To use and operate the camera we use OpenMV, we use a program made in Python, an
   3- When it detects a blue or orange line (depending on the side it is using) turn to the respective side.
     We detect the lines using an RGB sensor connected to the slave processor 14M2, this processor has been programmed with the values of the colours of the lines and when it detects a line it sends the information as bits to the main. 
   
-  4- The program knows when to stop by counting how many times it passed by the lines, after 12 times it moves forward a bit more and then completely stops
+  4- The program knows when to stop by counting how many times it passed by the lines, after 12 times it moves forward a bit more and then completely stops.
   
   
 

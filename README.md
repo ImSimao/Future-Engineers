@@ -23,7 +23,7 @@ Simão Freire
 ## `SRC` Source code description
 In the [`src`](/src) directory exits 2 subdirectories [`Picaxe`](/src/Picaxe) and [`camera`](/src/camera), in the subdirectory `Picaxe` there are 2 Programs written in basic picaxe, in the subdirectory `camera` there is the program that runs on our camera.
 
-To run and program with Picaxe it is needed to install the Picaxe IDE from their website and install the drivers, then connect the cable to the robot and hit program. In this robot, we use a pickaxe 28x2/40x2 as the Main and a 14M2 as a slave to control the RGB sensor and another picaxe 28x2/40x2 for the motors.
+To run and program with Picaxe it is needed to install the Picaxe IDE from their website and install the drivers, then connect the cable to the robot and hit program. In this robot, we use a pickaxe 28x2 as the Main and a 14M2 as a slave to control the RGB sensor and another picaxe 28x2 for the motors.
 
 To use and operate the camera we use OpenMV, we use a program made in Python, and all the libraries used are installed simultaneously with the OpenMV software. This program will identify the colour red or green and send it in bits to our main controller.
 ***

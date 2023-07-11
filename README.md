@@ -39,6 +39,7 @@ To use and operate the camera we use OpenMV, we use a program made in Python, an
     We detect the lines using an RGB sensor connected to the slave processor 14M2, this processor has been programmed with the values of the colours of the lines and when it detects a line it sends the information as bits to the main. 
   
   4- The program knows when to stop by counting how many times it passed by the lines, after 12 times it moves forward a bit more and then completely stops.
+  
 
 ### The Program - Main.bas
 

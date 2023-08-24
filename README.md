@@ -25,7 +25,7 @@ In the [`src`](/src) directory exits 2 subdirectories [`Picaxe`](/src/Picaxe) an
 
 To run and program with Picaxe it is needed to install the Picaxe IDE from their website and install the drivers, then connect the cable to the robot and hit program. In this robot, we use a pickaxe 28x2 as the Main and a 14M2 as a slave to control the RGB sensor and another picaxe 28x2 for the motors.
 
-To use and operate the camera we use OpenMV, we use a program made in Python, and all the libraries used are installed simultaneously with the OpenMV software. This program will identify the colour red or green and send it in bits to our main controller.
+To use and operate the camera we use OpenMV. We use a program made in Python, and all the libraries used are installed simultaneously with the OpenMV software. This program will identify the colour red or green and send it in bits to our main controller.
 ***
 ## The Program - General
 
@@ -35,7 +35,7 @@ To use and operate the camera we use OpenMV, we use a program made in Python, an
     Using the camera, we detect the colours by selecting a threshold with the OpenMV software, then we send the information as bits to the Main processor.
   ![Screenshot (5)](https://github.com/ImSimao/Future-Engineers/assets/138500914/bc0c6cec-5bdb-462a-9902-3587a5821a8d)
 
-  3- When it detects a blue or orange line (depending on the side it is using) turn to the respective side.
+  3- When it detects a blue or orange line (depending on the side it is using) it turns to the respective side.
     We detect the lines using an RGB sensor connected to the slave processor 14M2, this processor has been programmed with the values of the colours of the lines and when it detects a line it sends the information as bits to the main. 
   
   4- The program knows when to stop by counting how many times it passed by the lines, after 12 times it moves forward a bit more and then completely stops.

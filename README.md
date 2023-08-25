@@ -23,26 +23,26 @@ Simão Freire
 ## `SRC` Source code description
 In the [`src`](/src) directory exits 2 subdirectories [`Picaxe`](/src/Picaxe) and [`camera`](/src/camera), in the subdirectory `Picaxe` there are 2 Programs written in basic picaxe, in the subdirectory `camera` there is the program that runs on our camera.
 
-To run and program with Picaxe it is needed to install the Picaxe IDE from their website and install the drivers, then connect the cable to the robot and hit program. In this robot, we use a pickaxe 28x2 as the Main and a 14M2 as a slave to control the RGB sensor and another picaxe 28x2 for the motors.
+To run and program with Picaxe you need to install the Picaxe IDE from their website and install the drivers, then connect the cable to the robot and hit program. In this robot, we use a pickaxe 28x2 as the Main and a 14M2 as a slave to control the RGB sensor and another picaxe 28x2 for the motors.
 
 To use and operate the camera we use OpenMV. We use a program made in Python, and all the libraries used are installed simultaneously with the OpenMV software. This program will identify the colour red or green and send it in bits to our main controller.
 ***
 ## The Program - General
 
-  1- Identify where the outer wall is, this will make the program know if it uses the orange line or blue line to turn and follow the wall again.
+  1- Identify where the outer wall is. This will let the program know if it uses the orange or blue line to turn and follow the wall again.
   
-  2- Identify the objects and their respective colour to bypass them by the respective side.
+  2- Identify the objects and their respective colour to bypass the respective side.
     Using the camera, we detect the colours by selecting a threshold with the OpenMV software, then we send the information as bits to the Main processor.
   ![Screenshot (5)](https://github.com/ImSimao/Future-Engineers/assets/138500914/bc0c6cec-5bdb-462a-9902-3587a5821a8d)
 
   3- When it detects a blue or orange line (depending on the side it is using) it turns to the respective side.
-    We detect the lines using an RGB sensor connected to the slave processor 14M2, this processor has been programmed with the values of the colours of the lines and when it detects a line it sends the information as bits to the main. 
+    We detect the lines using an RGB sensor connected to the slave processor 14M2. This processor has been programmed with the values of the colours of the lines and when it detects a line it sends the information as bits to the main. 
   
-  4- The program knows when to stop by counting how many times it passed by the lines, after 12 times it moves forward a bit more and then completely stops.
+  4- The program knows when to stop by counting how many times it passed by the lines. After 12 times it moves forward a bit more and then stops completely.
 
 ### The Program - Main.bas
 
-  The Main program starts by looping the sonars routine to keep checking and detecting for the outer wall
+  The Main program starts by looping the sonars routine to keep checking and detecting the outer wall
 
   >Inicio2:
 >
@@ -56,9 +56,9 @@ To use and operate the camera we use OpenMV. We use a program made in Python, an
 >
   >goto inicio2:
 
-This routine checks the sonars from left, right and front to see if theres any obstacle or wall in front of the robot, then it starts following the outer wall.
+This routine checks the sonars from left, right, and front to see if there is any obstacle or wall in front of the robot, then it starts following the outer wall.
 
-When the front sonar detects and object within a predetermined distance it triggers the routine to bypass the object:
+When the front sonar detects an object within a predetermined distance it triggers the routine to bypass the object:
 
 >frente_contornar_2:
 >
@@ -74,9 +74,9 @@ When the front sonar detects and object within a predetermined distance it trigg
 >
 >goto inicio2
 
-The routine "cores_2" checks if there are any lines to make the turn, if there isn't it, it will check again the distance, if it's near enought to begin the bypassing routine it will go to "frente_lento_r_2" and will slow down and then bypass it, if it's still far enought it will continue moving forward at the default speed.
+The routine "cores_2" checks if there are any lines to make the turn. If there isn't, it will check the distance again. If it's near enough to begin the bypassing routine, it will go to "frente_lento_r_2" and will slow down and then bypass it. If it's still far away enough, it will continue moving forward at the default speed.
 
-The "contornar_verde_cego" and " contornar_vermelho_cego" routines will use the sharp to detect the objetc while bypassing it, beeing the only difference, if it bypasses it by the right or the left.
+The "contornar_verde_cego" and " contornar_vermelho_cego" routines will use the sharp to detect the object while bypassing it, the only difference being, if it bypasses it by the right or the left.
 
 >contornar_verde_cego:
 >
@@ -101,7 +101,7 @@ The "contornar_verde_cego" and " contornar_vermelho_cego" routines will use the 
 
 This Program only controls the RGB sensor.
 
-It starts with a loop to keep cheking for lines, if the values collected are in the threshhold of the colour of the line then it will count the time to check if it is not a false positive, if it is not a false positive then it will comunicate with the main processor informing it that there is a line.
+It starts with a loop to keep checking for lines. If the values collected are in the threshold of the colour of the line, then it will count the time to check if it is not a false positive. If it is not a false positive, then it will communicate with the main processor informing it that there is a line.
 
 >inicio:
 >
